@@ -52,3 +52,30 @@ r = [1,2,3,4]
 print(r)
 s= [i*i for i in r]
 print(s)
+
+def factorial(n):
+    """Number to calculate factorial of."""
+    if n < 1:
+        m = -n
+    else:
+        m = n
+    # the running total - eentuallt rhe factorial.
+    total = 1
+    #copy the value
+    # m = n
+    # Loop to do the multiplications.
+    while m >0:
+        total = total * m
+        m = m -1
+
+    #retirn the answer
+    if n < 1:
+        return - total
+    else:
+        return total
+    
+#test the function
+n = -20
+#calculate the factorial of n.
+print(f"The factorial of {n} is {factorial(n)}.")
+
