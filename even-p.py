@@ -20,7 +20,7 @@ class DFA:
         for c in s:
             # Find the state in arrows with key c.
             current = current.arrows[c]
-        # Return whethere we're in an accept state.
+         # Return whethere we're in an accept state.
         return current.accept
 
 def compile():
