@@ -1,6 +1,6 @@
 # Thompson's Construction
 
-class State():
+class State:
     """A state and its arrows in Thompson's construction."""
     #  # A label. None if e.
     #  label = None
@@ -10,11 +10,15 @@ class State():
     #  accept = False
     # Constructor.
     def __init__(self, label, arrows, accept):
-        """label is the arrow labels, arrows is a list of state to point to, is a boolean as to whether 
+        """label is the arrow labels, arrows is a list of state to point to,
+        is a boolean as to whether 
         this is an accept state"""
         self.label = label
-        self.arrpws = arrows
+        self.arrows = arrows
         self.accept = accept
+
+    def match(s):
+        """Return true iff s is accepted by this NFA"""
 
 class NFA:
     """A non-deterministic finite automaton."""
@@ -34,17 +38,17 @@ def re_to_nfa(postfix):
         # Concatenation
         if c == '.':
             # pop top NFA off stack.
-            nfa2 = stack [-1]
+            nfa2 = stack[-1]
             stack = stack[:-1]
             #Pop the next NFA off stack.
             nfa1 = stack [-1]
             stack = stack [:-1]
             # Make accept state of NFA1 non-accept
-            nfa1.end.Accept = False
+            nfa1.end.accept = False
             # make it point at start state of nfa2
-            nfa1.end.arrows = [nfa2.start]
+            nfa1.end.arrows.append(nfa2.start)
             # Make a new NFA with nfa1's start state and nfa2's end state
-            nfa = NFA(start=nfa1.start, end=nfa2.end)
+            nfa = NFA(nfa1.start, nfa2.end)
             # push to the stack.
             stack.append(nfa)
 
@@ -62,12 +66,16 @@ def re_to_nfa(postfix):
             start.arrows.append(nfa1.start)
             start.arrows.append(nfa2.start)
             #make old accept states non-accept
-            nfa1.end.Accept = False
-            nfa2.end.Accept = False
-            # Make a new NFA with nfa1's start state and nfa2's end state
+            nfa1.end.accept = False
+            nfa2.end.accept = False
+            #point old end states to new one.
+            nfa1.end.arrows.append(end)
+            nfa2.end.arrows.append(end)
+            # make a new NFA
             nfa = NFA(start, end)
             # push to the stack.
             stack.append(nfa)
+        
         elif c == '*':
              # pop one NFA off stack.
             nfa1 = stack [-1]
@@ -80,7 +88,7 @@ def re_to_nfa(postfix):
             # and at the new end state
             start.arrows.append(end)
             #make old accept states non-accept
-            nfa1.end.Accept = False
+            nfa1.end.accept = False
             #make old accept state point to new accept state
             nfa1.end.arrows.append(end)
             #make old accept state point to old accept state
@@ -95,16 +103,21 @@ def re_to_nfa(postfix):
             end = State(label=None, arrows=[], accept=True)
             # create the start state, pointed at the end state.
             start = State(label = c, arrows=[end], accept = False)
+            # point new start state at new end sttate
+            start.arrows.append(end)
             #Create the NFA with the start and end state
             nfa = NFA(start=start, end=end)
             # append the NFA to the NFA stack
             stack.append(nfa)
 
-    # there should only be one NFA on the stack.
-    return stack[0]
+# there should only be one NFA on the stack.
+    if len(stack) != 1:
+        return None
+    else:
+        return stack[0]
 
 if __name__ == "__main__":
-    for postfix in ["abb.*.a .", "100.*.1."]:
+    for postfix in ["abb.*.a .", "100.*.1.", 'ab|']:
         print(f"postfix:  {postfix}")
         print(f"nfa:      {re_to_nfa(postfix)}")
         print()
