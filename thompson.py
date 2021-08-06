@@ -17,8 +17,19 @@ class State:
         self.arrows = arrows
         self.accept = accept
 
-    def match(s):
-        """Return true iff s is accepted by this NFA"""
+    def followes(self):
+        """The set of states that are gotten from following this state and all
+        its e arrows."""
+        #include this state in the returned set.
+        states = {self}
+        # if this state has e arrows, i.e label is None.
+        if self.label is None:
+            #loop through this state's arrows
+            for state in self.arrows:
+                #Incorporate that state's e arrow states in states
+                states = (states | state.followes())
+        return states
+    
 
 class NFA:
     """A non-deterministic finite automaton."""
@@ -29,6 +40,34 @@ class NFA:
     def __init__(self, start, end):
         self.start = start
         self.end = end
+
+    def match(self, s):
+        """Return True iff this NFA (instance) matches the string s."""
+        #List of previous states that we are still in 
+        previous = self.start.followes()
+        #loop through string, a character at a time.
+        for c in s:
+            # start with an empty set of current states.
+            current = set()
+            #loop through the previous states.
+            for state in previous:
+                # Check if there is a c arrow from state.
+                if state.label == c: 
+                    # addd followes for next state.
+                    current = (current | state.arrows[0].followes())
+            # Replace previous with current.
+            previous = current
+        #if the final state is in previous, then return True. False otherwise
+        return (self.end in previous)
+        
+        # Test: print no of states ^
+      #  # ## follow the e arrows for each of the current states.
+       # for state in current:
+        #     #states with e arrows have None as their label
+        #     if state.label is None:
+        #         # Append all future states.
+        #         current = (current | set(state.arrows))
+        #print(f"No of states we're in: {len(current)}")
 
 def re_to_nfa(postfix):
     #a stack for NFAs
