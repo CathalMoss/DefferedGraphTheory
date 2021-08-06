@@ -11,7 +11,7 @@ t = '"Hello" from a different string'
 #u = "\"Hello\", world!"
 
 print(a, b, s, t)
-
+ 
 print(type(a))
 
 print(s[1])

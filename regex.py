@@ -29,10 +29,10 @@ print(f"There is {counter} answer(s) related to cab")
 
 #example3 
 #tried several different operators for this and couldn't get the correct answer
-myre3 = re.compile('a*(b)')
+myre3 = re.compile('a&b')
 counter = 0
 
-examples = ['fab', 'cab', 'dab', 'cat']
+examples = ['fab', 'cab', 'dab', 'cat'] 
 
 for e in examples:
     if myre3.match(e):
