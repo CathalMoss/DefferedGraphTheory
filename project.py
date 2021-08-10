@@ -1,7 +1,16 @@
 # Deffered Graph Theory Project
+import argparse
+
+
+parser = argparse.ArgumentParser(description='Add a Regular expression and hit enter')
+parser.add_argument('--help|-h', dest='help', action='help',
+                     help='Add a regular expression and hit enter')
+
+args = parser.parse_args()
+
 
 # Words for txt file
-f = "data.txt"
+f = "input.txt"
 f = open (f, 'r')
 
 #List in word file
