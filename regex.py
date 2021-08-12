@@ -1,6 +1,6 @@
 import re
 
-myre = re.compile('a+b+')
+myre = re.compile('a|b')
 
 examples = ['ab', 'aab', 'abb', 'aaabbb', 'ca', 'abab']
 

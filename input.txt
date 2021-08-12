@@ -1,2 +1,4 @@
-fab cab
-dab cat
+fab 
+cab
+dab 
+cat
