@@ -3,43 +3,45 @@ import argparse
 
 
 parser = argparse.ArgumentParser(description='Add a Regular expression and hit enter')
-parser.add_argument('--help|-h', dest='help', action='help',
-                     help='Add a regular expression and hit enter')
-
+parser.add_argument('filepath', metavar='path', type=str,
+                     help='Add filepath and hit enter')
 args = parser.parse_args()
 
 
+with open(args.filepath, 'r') as f:
+   # for line in fileSearcher:
+            #print(line)
+
 # Words for txt file
-f = "input.txt"
-f = open (f, 'r')
+#f = "input.txt"
+#f = open (f, 'r')
 
 #List in word file
-list = [] 
+ list = [] 
 
-# parse word file into individual words, sort, 
-# and then populate into word list
-for l in f:
-    l = l.split() #individual words
+# # parse word file into individual words, sort, 
+# # and then populate into word list
+ for l in f:
+     l = l.split() #individual words
 
-    for w in l:
-        list.append(w) # populate word list with words
+     for w in l:
+         list.append(w) # populate word list with words
 
-list.sort() #alphabetical order
+ list.sort() #alphabetical order
 
-wd = {} #word dictionary for words and counts them
+ wd = {} #word dictionary for words and counts them
 
-# count words in word list and then populate dictionary
-for w in list:
-    wd[w] =list.count(w)
+# # count words in word list and then populate dictionary
+ for w in list:
+     wd[w] =list.count(w)
 
-# print and format words and counts
-print('\n{:^8}{:^8}'.format('Word', 'Count'))
+# # print and format words and counts
+ print('\n{:^8}{:^8}'.format('Word', 'Count'))
 
-# data is printed
-for w in wd:
-    print('{:^8}{:^8d}'.format(w,wd[w]))
-
-print("")
+# # data is printed
+ for w in wd:
+     print('{:^8}{:^8d}'.format(w,wd[w]))
+ print("")
 
 
 
