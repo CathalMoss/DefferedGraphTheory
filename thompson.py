@@ -90,7 +90,6 @@ def re_to_nfa(postfix):
             nfa = NFA(nfa1.start, nfa2.end)
             # push to the stack.
             stack.append(nfa)
-
         elif c == '|':
             # pop top NFA off stack.
             nfa2 = stack [-1]
@@ -113,8 +112,7 @@ def re_to_nfa(postfix):
             # make a new NFA
             nfa = NFA(start, end)
             # push to the stack.
-            stack.append(nfa)
-        
+            stack.append(nfa) 
         elif c == '*':
              # pop one NFA off stack.
             nfa1 = stack [-1]
@@ -156,7 +154,7 @@ def re_to_nfa(postfix):
         return stack[0]
 
 if __name__ == "__main__":
-    for postfix in ["abb.*.a .", "100.*.1.", 'ab|']:
+    for postfix in ["abb.*.a.", "100.*.1.", 'ab|', "a*"]:
         print(f"postfix:  {postfix}")
         print(f"nfa:      {re_to_nfa(postfix)}")
         print()

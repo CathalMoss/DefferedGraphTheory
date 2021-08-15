@@ -5,43 +5,42 @@ counter = 0
 
 parser = argparse.ArgumentParser(description='Add a Regular expression and hit enter')
 parser.add_argument('firstcommand', metavar='path', type=str,
-                     help='Add filepath and hit enter')
+                     help='Add Regular Expression and then ...')
 parser.add_argument('filepath', metavar='path', type=str,
                      help='Add filepath and hit enter')
 args = parser.parse_args()
 
 
-with open(args.filepath, 'r') as f:
+with open(args.filepath, 'r', encoding='utf-8') as f:
     for l in f:
         if args.firstcommand in l:
             counter+=1
             #List in word file
-            # list = []
+            list = []
 
             # # # parse word file into individual words, sort,
             # # # and then populate into word list
-            # for l in f:
-            #     l = l.split() #individual words
+            l = l.split() #individual words
 
-            #     for w in l:
-            #         list.append(w) # populate word list with words
+            for w in l:
+                list.append(w) # populate word list with words
 
-            # list.sort() #alphabetical order
+            list.sort() #alphabetical order
 
-            # wd = {} #word dictionary for words and counts them
+            wd = {} #word dictionary for words and counts them
 
             # #count words in word list and then populate dictionary
-            # for w in list:
-            #     wd[w] =list.count(w)
+            for w in list:
+                wd[w] =list.count(w)
 
             # # # print and format words and counts
-            # print('\n{:^8}{:^8}'.format('Word', 'Count'))
+            print('\n{:^8}{:^8}'.format('Word', 'Count'))
 
             # # # data is printed
-            # for w in wd:
-            #     print('{:^8}{:^8d}'.format(w,wd[w]))
+            for w in wd:
+                print('{:^8}{:^8d}'.format(w,wd[w]))
 
-            print(counter)
+    print(f"\nCounter:  {counter}")
         #print(l)
 
 
