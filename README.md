@@ -1,6 +1,22 @@
 # DefferedGraphTheory 2021
 # G00371316
 
+# Project Brief
+Write a program in Python 3 that takes a regular expression and a file as command line arguments, and outputs the number of matches for the regular expression within the file. You may limit yourself to regular languages, with the concatenation operator ., the or operator |, and the Kleene star *. The program should work as follows:
+
+# Instructions to start Program
+Open windows terminal to the correct pathway and open in VS code.
+
+Enter regular expression as the first command.
+
+Enter the filepath as the second command.
+
+If user requires help, enter "--help" or "-h".  Instructions would then be provided.
+
+User should enter "python3 rescript.py cab input.txt" "cab" being the regular expression to find and "input.txt" being the filepath with a list of words. "cab" can be replaced by any word the user wants
+
+Depending on the input, user should get a number result when program is compiled.
+
 # 1.	Explain the difference between regular expressions in infix notation and those in postfix notation.
 
 # 2.	Explain how Thompson's construction for regular expressions works.
@@ -15,16 +31,33 @@ There are three basics concepts for operators and regular expressions which you 
 •	“*” means zero or more times, “a*” means zero or more “a’s”
 
 When adding states, there will always be one state called initial and the other state is called final.  Nothing points at the start state except for the initial arrow, the basics you need to know for Thompson’s constructor is the transition, where you start, and the accept states, which is always a single accept state. Here are a few examples of turning a regular expression into an NFA. 
- 
-This is the Kleene star/ closure, this means 0 or more.  “q” is the initial state and “f” is the final state for all these diagrams.  This set will be {Ε, s, ss, sss ….} as it can be empty or have repetition.
- 
-This is the union state “|”, the expression used is “s|t”.  As you can see “s” goes one way and “t” goes another because this means “s” or “t” which then reaches its final state once either of these are found.
+
+<img src ="images/398px-Thompson-concat.svg.png">
  
 The concatenation state “.”.  “s.t” means “s” beside “t” so the final state cannot be reached without “s” and “t” being beside one another.
-
  
+ <img src ="images/453px-Thompson-or.svg.png">
+ 
+This is the union state “|”, the expression used is “s|t”.  As you can see “s” goes one way and “t” goes another because this means “s” or “t” which then reaches its final state once either of these are found.
+
+<img src ="images/503px-Thompson-kleene-star.svg.png">
+ 
+This is the Kleene star/ closure, this means 0 or more.  “q” is the initial state and “f” is the final state for all these diagrams.  This set will be {Ε, s, ss, sss ….} as it can be empty or have repetition.
+
+<img src ="images/(ab)abb.png" width="450" height= "200">
+
 From this example you can see that this is the NFA for the regular expression (a|b)* abb using the Thompson constructor algorithm, all previous examples also used the same algorithm.  To find out if its correct, you would match this piece of text (Regular Expression) to the pattern that is shown and as seen in the diagram it does.  This shows the pattern matching which we are trying to prove.
 
+# Resources got from: 
+
+https://en.wikipedia.org/wiki/Thompson%27s_construction
+
+https://www.youtube.com/watch?v=k-84q1vx-_I
+                    
+https://web.microsoftstream.com/video/d6d9a2d8-b23e-4abf-b1b7-af3a2d44b82f?referrer=https://learnonline.gmit.ie/
+                    
+shuntingre.py lab
+                    
 # 3.	Explain what is meant by the term irregular language in the context of regular expressions.
 First of all, we will need to know what a regular expression is to answer this question.  A regular expression is a continuation of characters that identifies a search pattern.  It is a tool used in many apps and websites throughout the internet.  This tool is called a “find” or “find and replace”, you can usually get this through “crtl+f” on your keyboard.
 
@@ -74,3 +107,14 @@ Proof by contradiction:  (“n” = “p” as this is called the pumping length
 
 To explain this question slightly better, we proved that B = {0^n 1^n | n ≥ 0} is a non-regular language as we choose the “start”, “after” and the “pumping stage” to find a repeatable sequence.  As shown, we did not in the proof of contradiction.  This is an important theorem as it helps us understand why irregular languages cannot work with regular expressions.
 
+# Resources got from: 
+
+https://www.youtube.com/watch?v=qtnNyUlO6vU
+                  
+https://www.youtube.com/watch?v=Ph7Z9YttM0Q
+                   
+https://en.wikipedia.org/wiki/Regular_language
+                    
+https://en.wikipedia.org/wiki/Regular_expression
+                    
+https://www.youtube.com/watch?v=P9nxn7WTnm0&t=5s
