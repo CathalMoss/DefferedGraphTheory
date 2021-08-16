@@ -18,6 +18,27 @@ User should enter "python3 rescript.py cab input.txt" "cab" being the regular ex
 Depending on the input, user should get a number result when program is compiled.
 
 # 1.	Explain the difference between regular expressions in infix notation and those in postfix notation.
+There is a slight a difference between Infix and Postfix notation.  Both of them use operands and operators, although they do not use them in the same order which may make it unusual for individuals to read postfix notation.  Jan Lukasiewicz invented the postfix notation which is also known as “Reverse Polish notation” in 1924.  RPN is a fantastic way to simply evaluate an expression using a stack.  
+
+For example, infix notation has an <operand> <operator> <operand> (4 + 5).  Infix would be a lot friendlier to the human eye as with the modern age we have always done calculations in this format.  Postfix notation which is also called Reverse Polish Notation formats operands and operators slightly different.  The operator comes after the operands; <operand><operand><operator> (4 5 +).  As you can see that postfix is a lot easier for machines to read, postfix notation is a lot more efficient for the computer to understand.  Postfix notations makes it easier to complete equations for computers.  
+ 
+Another difference between the two notations is that infix uses and relies on parentheses.  The equation would incorrect if the parentheses were ignored.  Whereas postfix does not require any parentheses if every operator has the exact number of operands.  
+ 
+Using the “shuntingre.py” file we created in the labs I can prove that parentheses are needed in infix.  In this algorithm we change infix to postfix using regular expressions, I entered “(a.(b.b)*.a” the outcome was “abb.*.a.” And without the brackets the answer was “ab.b*.a.”  As seen from this answer that the two notations work differently with the parentheses are included or not included.
+ 
+In conclusion, infix is better and easier for humans to read and carry out expressions, although postfix is the methodical process for computers to carry out expressions at their optimal level. From the points I have raised explains the differences in infix and postfix using regular expressions. 
+ 
+# Resources got from:
+ 
+ shuntingre.py lab
+ 
+ https://www.youtube.com/watch?v=jos1Flt21is
+ 
+ https://en.wikipedia.org/wiki/Reverse_Polish_notation
+ 
+ https://en.wikipedia.org/wiki/Infix_notation#:~:text=Infix%20notation%20is%20the%20notation,plus%20sign%20in%202%20%2B%202.
+ 
+
 
 # 2.	Explain how Thompson's construction for regular expressions works.
 Thompson’s constructor, also known as McNaughton-Yamada is an algorithm which takes regular expressions and transforms them into an equivalent NFA (nondeterministic finite automaton) or an epsilon NFA.  This will then by recognised by the computer as patterns of text, this algorithm was invented by Ken Thompson in the 1960s. 
@@ -56,7 +77,6 @@ https://www.youtube.com/watch?v=k-84q1vx-_I
                     
 https://web.microsoftstream.com/video/d6d9a2d8-b23e-4abf-b1b7-af3a2d44b82f?referrer=https://learnonline.gmit.ie/
                     
-shuntingre.py lab
                     
 # 3.	Explain what is meant by the term irregular language in the context of regular expressions.
 First of all, we will need to know what a regular expression is to answer this question.  A regular expression is a continuation of characters that identifies a search pattern.  It is a tool used in many apps and websites throughout the internet.  This tool is called a “find” or “find and replace”, you can usually get this through “crtl+f” on your keyboard.
