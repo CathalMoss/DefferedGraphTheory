@@ -1,6 +1,0 @@
-bat
-dog
-chicken
-pig
-horse
-bog
