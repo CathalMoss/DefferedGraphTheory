@@ -2,7 +2,7 @@
 # G00371316
 
 # Project Brief
-Write a program in Python 3 that takes a regular expression and a file as command line arguments, and outputs the number of matches for the regular expression within the file. You may limit yourself to regular languages, with the concatenation operator ., the or operator |, and the Kleene star *. The program should work as follows:
+Write a program in Python 3 that takes a regular expression and a file as command line arguments, and outputs the number of matches for the regular expression within the file. You may limit yourself to regular languages, with the concatenation operator ., the or operator |, and the Kleene star *.
 
 # Instructions to start Program
 Open windows terminal to the correct pathway and open in VS code.
@@ -20,7 +20,7 @@ Depending on the input, user should get a number result when program is compiled
 # 1.	Explain the difference between regular expressions in infix notation and those in postfix notation.
 There is a slight a difference between Infix and Postfix notation.  Both of them use operands and operators, although they do not use them in the same order which may make it unusual for individuals to read postfix notation.  Jan Lukasiewicz invented the postfix notation which is also known as “Reverse Polish notation” in 1924.  RPN is a fantastic way to simply evaluate an expression using a stack.  
 
-For example, infix notation has an <operand> <operator> <operand> (4 + 5).  Infix would be a lot friendlier to the human eye as with the modern age we have always done calculations in this format.  Postfix notation which is also called Reverse Polish Notation formats operands and operators slightly different.  The operator comes after the operands; <operand><operand><operator> (4 5 +).  As you can see that postfix is a lot easier for machines to read, postfix notation is a lot more efficient for the computer to understand.  Postfix notations makes it easier to complete equations for computers.  
+For example, infix notation has an (operand) (operator) (operand) (4 + 5).  Infix would be a lot friendlier to the human eye as with the modern age we have always done calculations in this format.  Postfix notation which is also called Reverse Polish Notation formats operands and operators slightly different.  The operator comes after the operands; (operand)(operand)(operator) (4 5 +).  As you can see that postfix is a lot easier for machines to read, postfix notation is a lot more efficient for the computer to understand.  Postfix notations makes it easier to complete equations for computers.  
  
 Another difference between the two notations is that infix uses and relies on parentheses.  The equation would incorrect if the parentheses were ignored.  Whereas postfix does not require any parentheses if every operator has the exact number of operands.  
  
@@ -125,7 +125,7 @@ Proof by contradiction:  (“n” = “p” as this is called the pumping length
 
     i.	=> non regular
 
-To explain this question slightly better, we proved that B = {0^n 1^n | n ≥ 0} is a non-regular language as we choose the “start”, “after” and the “pumping stage” to find a repeatable sequence.  As shown, we did not in the proof of contradiction.  This is an important theorem as it helps us understand why irregular languages cannot work with regular expressions.
+To explain this question slightly better, we proved that B = {0^n 1^n | n ≥ 0} is a non-regular language as we choose the “start”, “after” and the “pumping stage” to find a repeatable sequence.  As shown, we did not, in the proof of contradiction.  This is an important theorem as it helps us understand why irregular languages cannot work with regular expressions.
 
 # Resources got from: 
 
